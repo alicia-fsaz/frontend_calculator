@@ -17,12 +17,9 @@ buttons.forEach((button) => {
         if (valor_2 === null) {
             valor_2 = '';
         }
-        if (buttonValue == '=') {
-            
-        }
         if (buttonValue != '*' && buttonValue != '/' && buttonValue != '-' && buttonValue != '+' && buttonValue != '=') {
             if (operador === null){
-                valor_1 += buttonValue;
+                valor_1 += buttonValue; 
                 display.innerHTML = valor_1;
             }
             if (operador !== null){
@@ -30,9 +27,28 @@ buttons.forEach((button) => {
                 display.innerHTML = valor_2;
             }
         } else{
-            operador = buttonValue;
-            if (valor_1 !== '') {
+            if(buttonValue !== '='){
+                operador = buttonValue;
+            }
+
+            if (valor_1 !== '' && buttonValue != '=') {
                 display.innerHTML = '0';
+            }
+            if (buttonValue == '=' && valor_1 != null && valor_2 != null) {
+                switch(operador){
+                    case '+':
+                        display.innerHTML = valor_1 + valor_2;
+                    break;
+                    case '-':
+                        display.innerHTML = valor_1 - valor_2
+                    break;
+                    case '*':
+                        display.innerHTML = valor_1 * valor_2
+                    break;
+                    case '/':
+                        display.innerHTML = valor_1 / valor_2
+                    break;
+                }
             }
         }
     })
