@@ -14,11 +14,26 @@ buttons.forEach((button) => {
         if (valor_1 === null) {
             valor_1 = '';
         }
+        if (valor_2 === null) {
+            valor_2 = '';
+        }
+        if (buttonValue == '=') {
+            
+        }
         if (buttonValue != '*' && buttonValue != '/' && buttonValue != '-' && buttonValue != '+' && buttonValue != '=') {
-            valor_1 += buttonValue;
-            display.innerHTML = valor_1;
+            if (operador === null){
+                valor_1 += buttonValue;
+                display.innerHTML = valor_1;
+            }
+            if (operador !== null){
+                valor_2 += buttonValue;
+                display.innerHTML = valor_2;
+            }
         } else{
             operador = buttonValue;
+            if (valor_1 !== '') {
+                display.innerHTML = '0';
+            }
         }
     })
 });
