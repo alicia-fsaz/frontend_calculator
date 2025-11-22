@@ -35,6 +35,8 @@ buttons.forEach((button) => {
                 display.innerHTML = '0';
             }
             if (buttonValue == '=' && valor_1 != null && valor_2 != null) {
+                valor_1 = Number(valor_1)
+                valor_2 = Number(valor_2)
                 switch(operador){
                     case '+':
                         display.innerHTML = valor_1 + valor_2;
@@ -49,14 +51,31 @@ buttons.forEach((button) => {
                         display.innerHTML = valor_1 / valor_2
                     break;
                 }
+                valor_1 = display.innerHTML
+                operador = null
+                valor_2 = null
             }
         }
     })
 });
 
-document.querySelector('#clear_entry').addEventListener('click', () => {
+document.querySelector('#clear').addEventListener('click', () => {
     valor_1 = null;
     valor_2 = null;
     operador = null;
+    display.innerHTML = '0';
+});
+
+document.querySelector('#clear_entry').addEventListener('click', () => {
+    if (valor_2 == null) {
+        valor_1 = ''
+        display.innerHTML = '0'
+    }
+
+    if(valor_2 != null){
+        valor_2 = ''
+        display.innerHTML = '0'
+    }
+
     display.innerHTML = '0';
 });
