@@ -2,7 +2,7 @@ const display = document.querySelector('#display');
 
 let valor_1 = null;
 let valor_2 = null;
-let operador = null;
+let operator = null;
 
 display.innerHTML = '0';
 
@@ -18,17 +18,17 @@ buttons.forEach((button) => {
             valor_2 = '';
         }
         if (buttonValue != '*' && buttonValue != '/' && buttonValue != '-' && buttonValue != '+' && buttonValue != '=') {
-            if (operador === null){
+            if (operator === null){
                 valor_1 += buttonValue; 
                 display.innerHTML = valor_1;
             }
-            if (operador !== null){
+            if (operator !== null){
                 valor_2 += buttonValue;
                 display.innerHTML = valor_2;
             }
         } else{
             if(buttonValue !== '='){
-                operador = buttonValue;
+                operator = buttonValue;
             }
 
             if (valor_1 !== '' && buttonValue != '=') {
